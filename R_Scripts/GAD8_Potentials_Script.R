@@ -34,4 +34,4 @@ Potentials <- Combined_data %>% group_by(tar)%>%
 Combined_data <- left_join(Combined_data, Potentials, by = "tar")
 Combined_data <- Combined_data[order(Combined_data$All_Domains),]
 
-Combined_data %>% group_by(All_Domains)%>% summarise(Number_of_obs = n()) %>% view()
+Simplified_gad8_data <- Combined_data %>% select(-start, -stop, -sig_desc, -sig_acc) %>% distinct(tar, .keep_all = TRUE)
