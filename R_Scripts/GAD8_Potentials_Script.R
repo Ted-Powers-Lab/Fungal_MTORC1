@@ -1,7 +1,17 @@
 source(file = "~/GitHub/Fungal_MTORC1/R_Scripts/Library_Script.R")
 
 # Need to add a "combined GAD8 potential csv list here
+file_list <- list.files(path = "~/GitHub/AKT_Research/CSV_Files/Combined_CSVs/GAD8")
 
+
+
+
+
+
+
+
+
+combined_gad8_potential_csv
 
 file_list_of_tibbles_tsv <- list.files(path = "~/GitHub/AKT_Research/CSV_Files/Combined_TSVs/GAD8",
                                        pattern = "\\.*tsv",
@@ -35,3 +45,5 @@ Combined_data <- left_join(Combined_data, Potentials, by = "tar")
 Combined_data <- Combined_data[order(Combined_data$All_Domains),]
 
 Simplified_gad8_data <- Combined_data %>% select(-start, -stop, -sig_desc, -sig_acc) %>% distinct(tar, .keep_all = TRUE)
+
+write_csv(Combined_data, file = "~/GitHub/AKT_Research/CSV_Files/Combined_CSVs/Most_Likely_GAD8_Proteins.csv")

@@ -14,6 +14,11 @@ potential_akts <- read_csv(file = "~/GitHub/AKT_Research/CSV_Files/Combined_CSVs
 
 potential_akts <- left_join(potential_akts, taxonomy_information, by="Organism Taxonomic ID")
 
+#potential_gad8s <- read_csv(file = "~/GitHub/AKT_Research/CSV_Files/Combined_CSVs/Most_Likely_GAD8_Proteins.csv")
+#potential_gad8s <- left_join(potential_gad8s, taxonomy_information, by = "Organism Taxonomic ID")
+
+simplified_potential_akts <- potential_akts %>% select(-sig_acc, -sig_desc, -start, -stop, -e_value) %>% distinct(tar, .keep_all = TRUE)
+
 
 
 
